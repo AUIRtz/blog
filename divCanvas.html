@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>divCanvas</title>
+	<style type="text/css">
+		#canvas{
+			height: 100vh;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div id="canvas"></div>
+	<script type="text/javascript">
+		var div = document.getElementById('canvas')
+		var painting = false
+		canvas.onmousedown = function(down){
+			painting = true
+			var x = down.clientX
+			var y = down.clientY
+			var divA = document.createElement('div')
+			divA.style = 'width: 6px; height: 6px; background:black; border-radius: 3px;'+
+				'position:absolute; left: '+x +'px; top: '+y +'px;'
+			canvas.appendChild(divA)
+		}
+
+		canvas.onmousemove = function(move){
+			if(painting){
+				var x = move.clientX
+				var y = move.clientY
+				var divA = document.createElement('div')
+				divA.style = 'width: 6px; height: 6px; background:black; border-radius: 3px;'+
+					'position:absolute; left: '+x +'px; top: '+y +'px;'
+				canvas.appendChild(divA)
+			}else{
+				
+			}
+		}
+
+		canvas.onmouseup = function(up){
+			painting = false
+		}
+	</script>
+</body>
+</html>
